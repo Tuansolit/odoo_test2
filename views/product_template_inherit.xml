@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='detailed_type']" position="before">
-                    <field name="warranty"/>
+                    <field name="warranty" groups="odoo_test_2.group_advanced_sale " />
                     <field name="date_from"/>
                     <field name="date_to"/>
                 </xpath>
