@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="discount_money_form" model="ir.ui.view">
+            <field name="name">discount.money.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree//field[@name='price_subtotal']" position="before">
+                    <field name="discount_money"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="Calculated_discount_total_form" model="ir.ui.view">
+            <field name="name">Calculated.discount.total.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group//group//field[@name='tax_totals_json']" position="before">
+                    <field name="Calculated_discount_total" />
+                </xpath>
+            </field>
+        </record>
+
+
+</odoo>

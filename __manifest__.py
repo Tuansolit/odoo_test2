@@ -13,6 +13,8 @@ Description related to library.
     'depends': ['base', 'account', 'sale_management'],
     'data': ['security/groups.xml',
              'security/ir.model.access.csv',
-             'views/product_template_inherit.xml'],
+             'views/product_template_inherit.xml',
+             'views/sale_order.xml'
+             ],
     'demo': ['data/demo.xml'],
 }
