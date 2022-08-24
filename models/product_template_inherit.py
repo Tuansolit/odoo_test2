@@ -35,7 +35,8 @@ class ProductTemplate(models.Model):
     def _compute_time_interval(selfs):
         for rec in selfs:
             if rec.warranty:
-                rec.time_interval = (pd.Interval(pd.Timestamp(date.today()), pd.Timestamp(rec.date_to), closed='left')).length
+                if rec.date_to > date.today():
+                    rec.time_interval = (pd.Interval(pd.Timestamp(date.today()), pd.Timestamp(rec.date_to), closed='left')).length
 
 
 
