@@ -9,6 +9,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//tree//field[@name='price_subtotal']" position="before">
                     <field name="discount_money"/>
+                     <field name="time_intervaler" string="Warranty left"/>
                 </xpath>
             </field>
         </record>
@@ -19,7 +20,8 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//group//group//field[@name='tax_totals_json']" position="before">
-                    <field name="Calculated_discount_total" />
+                    <field name="Calculated_discount_total" widget="monetary" />
+
                 </xpath>
             </field>
         </record>
