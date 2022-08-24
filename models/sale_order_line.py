@@ -34,5 +34,5 @@ class SaleOrderLine(models.Model):
     def _warranty_check(selfs):
         for line in selfs:
             if line.product_id.warranty:
-                if line.product_id.date_to < date.today():
+                if line.product_id.date_to > date.today():
                     line.time_intervaler = line.product_id.time_interval
