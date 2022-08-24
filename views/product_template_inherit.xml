@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='detailed_type']" position="before">
-                    <field name="warranty" groups="odoo_test_2.group_advanced_sale " />
+                    <field name="warranty" groups="odoo_test_2.group_advanced_sale "/>
                     <field name="date_from"/>
                     <field name="date_to"/>
                     <field name="time_interval"/>
@@ -31,6 +31,16 @@
             </field>
         </record>
 
-
+        <record id="create_filter_tree_view" model="ir.ui.view">
+            <field name="name">create.filter.tree.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='filter_to_purchase']" position="after">
+                    <filter string="Warranty valid" name="warranty_valid"
+                            domain="[('time_interval', '!=', False)]"/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>
