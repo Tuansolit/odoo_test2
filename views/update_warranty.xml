@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="update_warranty_form_view" model="ir.ui.view">
+            <field name="name">update_warranty_form_view</field>
+            <field name="model">update.warranty</field>
+            <field name="arch" type="xml">
+                <form string="ModelTitle">
+                    <sheet>
+
+                        <group>
+
+                            <group>
+                                <field name="from_date"/>
+                                <field name="to_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+                <footer>
+                    <button string='Edit' name='edit_warranty' class='btn-primary' type='object'/>
+                    <button string='Cancel' class='btn-default' special='cancel'/>
+                </footer>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
