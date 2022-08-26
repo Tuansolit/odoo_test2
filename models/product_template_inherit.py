@@ -38,5 +38,19 @@ class ProductTemplate(models.Model):
                 if rec.date_to > date.today():
                     rec.time_interval = (pd.Interval(pd.Timestamp(date.today()), pd.Timestamp(rec.date_to), closed='left')).length
 
+    def update_warranty(self):
+        if not self:
+            return True
 
+        return {
+            'name': 'update warranty ',
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'update.warranty',
+            'views': [(False, 'form')],
+            'context': {'default_product_id': [(6, 0, self.ids)]},
+            'target': 'new',
+
+        }
 

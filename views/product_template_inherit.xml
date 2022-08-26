@@ -42,5 +42,14 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="model_action_update" model="ir.actions.server">
+            <field name="name">Update warranty</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">action = records.update_warranty()</field>
+        </record>
+
     </data>
 </odoo>
