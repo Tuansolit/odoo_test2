@@ -16,8 +16,8 @@ class SaleOrderLine(models.Model):
         for line in self:
             if not line.product_id.warranty:
                 line.update({
-                    'price_subtotal': line.price_subtotal - (line.price_subtotal * 10) / 100,
-                    'price_total': line.price_subtotal - (line.price_subtotal * 10) / 100,
+                    'price_subtotal': line.price_subtotal - line.discount_money,
+                    'price_total': line.price_subtotal - line.discount_money,
 
                 })
         return res
@@ -33,6 +33,10 @@ class SaleOrderLine(models.Model):
     @api.depends('product_id.time_interval', 'product_id.date_to')
     def _warranty_check(selfs):
         for line in selfs:
-            if line.product_id.warranty:
-                if line.product_id.date_to > date.today():
-                    line.time_intervaler = line.product_id.time_interval
+            if not line.product_id.date_from:
+                continue
+            if not line.product_id.date_to:
+                continue
+            else:
+                # if line.product_id.date_to > date.today():
+                line.time_intervaler = line.product_id.time_interval

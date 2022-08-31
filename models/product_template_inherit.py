@@ -7,8 +7,6 @@ import pandas as pd
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    shit = fields.Char('Shit')
-
     date_from = fields.Date()
 
     date_to = fields.Date()
@@ -34,9 +32,15 @@ class ProductTemplate(models.Model):
     @api.depends('date_from', 'date_to')
     def _compute_time_interval(selfs):
         for rec in selfs:
-            if rec.warranty:
+            if not rec.date_to and rec.date_from:
+                continue
+            else:
                 if rec.date_to > date.today():
-                    rec.time_interval = (pd.Interval(pd.Timestamp(date.today()), pd.Timestamp(rec.date_to), closed='left')).length
+                    if rec.date_from > date.today():
+                        rec.time_interval = (pd.Interval(pd.Timestamp(rec.date_from), pd.Timestamp(rec.date_to), closed='left')).length
+                    else:
+                        rec.time_interval = (pd.Interval(pd.Timestamp(date.today()), pd.Timestamp(rec.date_to), closed='left')).length
+
 
     def update_warranty(self):
         if not self:

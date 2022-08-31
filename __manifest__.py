@@ -10,7 +10,7 @@ Description related to library.
     'website': "http://www.example.com",
     'category': 'Uncategorized',
     'version': '15.0.13.0.1.0.1',
-    'depends': ['base', 'account', 'sale', 'sale_management'],
+    'depends': ['base', 'account', 'sale', 'sale_management', 'website', 'product'],
     'data': ['security/groups.xml',
              'security/ir.model.access.csv',
              'views/product_template_inherit.xml',
