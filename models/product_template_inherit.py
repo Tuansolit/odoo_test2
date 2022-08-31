@@ -1,6 +1,5 @@
 from odoo import api, fields, models
-from datetime import datetime, timedelta, date
-import time
+from datetime import datetime, date
 import pandas as pd
 
 
@@ -15,7 +14,6 @@ class ProductTemplate(models.Model):
 
     time_interval = fields.Char(compute='_compute_time_interval', store=True)
 
-
     @api.depends('date_from', 'date_to')
     def _compute_warranty(self):
         for rec in self:
@@ -28,7 +26,6 @@ class ProductTemplate(models.Model):
                 to_date = "{}".format(datetime.strftime(rec.date_to, '%d%m%y'))
                 rec.warranty = 'PWR/' + from_date + '/' + to_date
 
-
     @api.depends('date_from', 'date_to')
     def _compute_time_interval(selfs):
         for rec in selfs:
@@ -37,10 +34,11 @@ class ProductTemplate(models.Model):
             else:
                 if rec.date_to > date.today():
                     if rec.date_from > date.today():
-                        rec.time_interval = (pd.Interval(pd.Timestamp(rec.date_from), pd.Timestamp(rec.date_to), closed='left')).length
+                        rec.time_interval = (
+                            pd.Interval(pd.Timestamp(rec.date_from), pd.Timestamp(rec.date_to), closed='left')).length
                     else:
-                        rec.time_interval = (pd.Interval(pd.Timestamp(date.today()), pd.Timestamp(rec.date_to), closed='left')).length
-
+                        rec.time_interval = (
+                            pd.Interval(pd.Timestamp(date.today()), pd.Timestamp(rec.date_to), closed='left')).length
 
     def update_warranty(self):
         if not self:
@@ -57,4 +55,3 @@ class ProductTemplate(models.Model):
             'target': 'new',
 
         }
-
