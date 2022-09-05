@@ -7,11 +7,8 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     date_from = fields.Date()
-
     date_to = fields.Date()
-
     warranty = fields.Char(compute='_compute_warranty', store=True)
-
     time_interval = fields.Char(compute='_compute_time_interval', store=True)
 
     @api.depends('date_from', 'date_to')
