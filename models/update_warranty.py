@@ -1,7 +1,7 @@
 from odoo import fields, models, api
 
 
-class ModelName(models.Model):
+class UpdateWarranty(models.Model):
     _name = 'update.warranty'
     _description = 'Description'
 

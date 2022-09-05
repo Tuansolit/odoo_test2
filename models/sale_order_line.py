@@ -5,9 +5,7 @@ from datetime import datetime, timedelta, date
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
-
     discount_money = fields.Float(compute='_compute_discount_money', store=True)
-
     time_intervaler = fields.Char(compute='_warranty_check', store=True)
 
     @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id')
@@ -18,7 +16,6 @@ class SaleOrderLine(models.Model):
                 line.update({
                     'price_subtotal': line.price_subtotal - line.discount_money,
                     'price_total': line.price_subtotal - line.discount_money,
-
                 })
         return res
 

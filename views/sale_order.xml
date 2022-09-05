@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Inherit Form View to Modify it -->
-    <record id="discount_money_form" model="ir.ui.view">
+    <record id="test_2_discount_money_form" model="ir.ui.view">
         <field name="name">discount.money.form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
@@ -14,8 +13,8 @@
         </field>
     </record>
 
-    <record id="Calculated_discount_total_form" model="ir.ui.view">
-        <field name="name">Calculated.discount.total.form</field>
+    <record id="test_2_calculated_discount_total_form" model="ir.ui.view">
+        <field name="name">calculated.discount.total.form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
@@ -26,7 +25,7 @@
         </field>
     </record>
 
-    <record id="custom_font_end_tree_View" model="ir.ui.view">
+    <record id="test_2_custom_font_end_tree_View" model="ir.ui.view">
         <field name="name">custom_font_end_tree_View</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
@@ -41,21 +40,13 @@
         </field>
     </record>
 
-    <template id="custom_font_end" inherit_id="website_sale.cart_lines">
-        <xpath expr="//t[1]//table[1]//tbody[1]//t[1]//tr[1]//td[3]//div[1]//t[1]//strong[1][@t-field='line.name_short']"
-               position="after">
-            <p>
-                <strong itemprop="name" t-field="line.product_id.warranty">Product warranty</strong>
-            </p>
-
-        </xpath>
-    </template>
-
-    <template id="product_warranty_inherit" name="My product Inherit" inherit_id="website_sale.product">
-        <xpath expr="//h1[@t-field='product.name']" position="after">
-            <h5 itemprop="name" t-field="product.warranty">Product warranty</h5>
-        </xpath>
-    </template>
+    <!--    <template id="test_2_custom_font_end" inherit_id="website_sale.cart_lines">-->
+    <!--        <xpath expr="/t[1]/table[1]/thead[1]/tr[1]/th[1][@class='td-img']"-->
+    <!--               position="after">-->
+    <!--            <th></th>-->
+    <!--            <th class="text-center td-warranty">Warranty</th>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
 
 
 </odoo>
