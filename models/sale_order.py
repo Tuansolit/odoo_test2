@@ -7,8 +7,8 @@ class SaleOrderInherit(models.Model):
 
     @api.depends('order_line.discount_money')
     def _compute_Calculated_discount_total(self):
-        s = 0
         for rec in self:
+            s = 0
             for line in rec.order_line:
                 s += line.discount_money
             rec.Calculated_discount_total = s
