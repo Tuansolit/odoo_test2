@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="//tree//field[@name='price_subtotal']" position="before">
                 <field name="discount_money"/>
-                <field name="time_intervaler" string="Warranty left"/>
+                <field name="time_intervaler"/>
             </xpath>
         </field>
     </record>
